@@ -1,0 +1,126 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'androidx.navigation.safeargs'
+    id 'kotlin-kapt'
+    id 'kotlin-parcelize'
+}
+
+android {
+    compileSdk 31
+
+    defaultConfig {
+        applicationId "com.az.moviesapp"
+        minSdk 23
+        targetSdk 31
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField "String", "URL", '"https://imdb-api.com/en/API/"'
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    buildFeatures {
+        viewBinding true
+    }
+}
+
+dependencies {
+
+    implementation 'androidx.core:core-ktx:1.7.0'
+    implementation 'androidx.appcompat:appcompat:1.4.1'
+    implementation 'com.google.android.material:material:1.5.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.3'
+    testImplementation 'junit:junit:4.+'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+
+
+
+    //Android X
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.4.0-alpha10'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.4.0-alpha10'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.datastore:datastore-preferences:1.0.0'
+    implementation 'androidx.multidex:multidex:2.0.1'
+    implementation 'androidx.viewpager2:viewpager2:1.1.0-beta01'
+    implementation 'androidx.recyclerview:recyclerview:1.3.0-alpha01'
+
+    // LiveData & ViewModel&lifeCycle
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.4.0"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0"
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.4.1"
+
+
+    // coroutines
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.0'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.0'
+
+    // Timber.
+    // Logger with a small, extensible API
+    // which provides utility on top of Android's normal Log class.
+    implementation 'com.jakewharton.timber:timber:5.0.1'
+
+    // Koin.
+    // Dependency injector.
+    implementation 'org.koin:koin-android:2.2.2'
+    implementation 'org.koin:koin-androidx-viewmodel:2.2.2'
+
+    // Retrofit.
+    // Type-safe HTTP client.
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-moshi:2.9.0'
+
+    // OkHttp Logging Interceptor.
+    // For HTTP logging.
+    implementation 'com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.2'
+
+    def  roomVersion = "2.4.1"
+
+
+    implementation("androidx.room:room-runtime:$roomVersion")
+    annotationProcessor("androidx.room:room-compiler:$roomVersion")
+
+    // To use Kotlin annotation processing tool (kapt)
+    kapt("androidx.room:room-compiler:$roomVersion")
+    // To use Kotlin Symbolic Processing (KSP)
+    //ksp("androidx.room:room-compiler:$roomVersion")
+
+    // optional - Kotlin Extensions and Coroutines support for Room
+    implementation("androidx.room:room-ktx:$roomVersion")
+
+
+    //Glide
+    implementation 'com.github.bumptech.glide:glide:4.12.0'
+    kapt 'com.github.bumptech.glide:compiler:4.12.0'
+    implementation ('com.github.bumptech.glide:okhttp3-integration:4.11.0'){
+        exclude group: 'glide-parent'
+    }
+
+
+    implementation(platform("com.squareup.okhttp3:okhttp-bom:4.9.0"))
+    implementation("com.squareup.okhttp3:okhttp")
+    implementation("com.squareup.okhttp3:logging-interceptor")
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    implementation 'com.google.code.gson:gson:2.8.6'
+
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+
+    implementation 'am.appwise.components:NoInternetDialog:1.1.3'
+
+}
